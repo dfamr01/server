@@ -1,0 +1,21 @@
+
+#buildStage
+FROM node:14.5.0 as buildStage
+ARG AWS_ACCESS_KEY_ID
+ARG AWS_SECRET_ACCESS_KEY
+ARG AWS_DEFAULT_REGION
+
+
+ENV AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+ENV AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+ENV AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION
+
+WORKDIR /streamme
+RUN rm -rf node_modules
+COPY package*.json ./
+RUN npm install
+COPY . .
+
+CMD NODE_ENV=development node server/server.js
+EXPOSE 3000
+

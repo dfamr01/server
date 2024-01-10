@@ -1,0 +1,9 @@
+node_modules
+dist
+seeds
+localStorage
+temp
+currencies
+.git
+.idea
+logs
