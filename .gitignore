@@ -28,7 +28,7 @@ Desktop.ini
 .Trashes
 
 ### shared server files
-shared
-shared/
-/server/shared/
+# shared
+# shared/
+# /server/shared/
 temp/
