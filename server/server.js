@@ -1,13 +1,13 @@
-const logger = require('log4js').getLogger('server');
-const config = require('./config/config');
+const logger = require("log4js").getLogger("server");
+const config = require("./config/config");
 // postgre should always go first
-const postgre = require('./config/postgre');
-const redis = require('./config/redis');
-const websockets = require('./config/websockets');
-const express = require('./config/express');
-const passport = require('./config/passport');
-const cloudinary = require('./config/cloudinary');
-const {makeTempFolder, Currencies} = require('./shared/utils');
+const postgre = require("./config/postgre");
+const redis = require("./config/redis");
+const websockets = require("./config/websockets");
+const express = require("./config/express");
+const passport = require("./config/passport");
+const cloudinary = require("./config/cloudinary");
+const { makeTempFolder, Currencies } = require("./shared/utils");
 //const nLoger = require('./config/log4js')('SERVER');
 
 const port = config.port;
@@ -15,18 +15,17 @@ const app = express();
 
 //nLoger.error(`this is a server`);
 
-postgre
-  .then(async () => {
+postgre.then(async () => {
     makeTempFolder();
     Currencies.initializeCurrencies();
     passport();
     cloudinary();
 
     const server = app.listen(port, () => logger.info(`listening on port: ${port}`));
-    await websockets(server);
-  });
+    // await websockets(server);
+});
 
-module.exports = {app, postgre};
+module.exports = { app, postgre };
 
 /*
 const stripe = require('stripe')('sk_test_51Iln20KuNxywaQi9hJE0waKCF2WsivchNnAlrdELv1StUF57pFWJg93rXPwbHQutmG6omgdVysSDlcwICZouxmIY00VBolBWBk');
@@ -35,13 +34,11 @@ stripe.accounts.del(
 );
 */
 
-
 //const crypto = require('crypto');
 
 //function something() {
 
 //console.log(crypto.randomFillSync(Buffer.alloc(25)).toString('hex'));
-
 
 /*
 const buf = Buffer.alloc(25);
@@ -99,8 +96,7 @@ setTimeout(test, 10000);
 //const AccessToken = require('./shared/database/models/accessToken.model');
 
 async function test() {
-
-  /*
+    /*
   const firstName = 'Neta';
   const lastName = 'Meta';
   const email = 'jackmaroney906@gmail.com';
@@ -124,10 +120,9 @@ async function test() {
   console.log('useruseruser', user);// eslint-disable-line no-console
 
   */
-  //AccessControl
-  //
-
-  /*
+    //AccessControl
+    //
+    /*
   const res = await AccessControl.create({
     permission: 'EDIT_CONTENT',
     action: 'ALLOW',
@@ -135,8 +130,7 @@ async function test() {
     toUserId: 1
   });
   */
-
-  /*
+    /*
   const res = await AccessControl.create({
     permission: 'VIEW_CONTENT',
     action: 'ALLOW',
@@ -145,12 +139,9 @@ async function test() {
   });
 
   */
-
-  ///
-
-  //console.log('res', res);
-
-  /*
+    ///
+    //console.log('res', res);
+    /*
   const allFields = [
     'permission',
     'action',
@@ -167,19 +158,17 @@ async function test() {
     'toOccurrenceId'
   ];
   */
-
-  //const newAccessControl = {
-  //  permission: 'MEMBERSHIP_ENTERPRISE',
-  //  toUserId: 1,
-  //};
-  //const user = await User.findByPk(1);
-  //const accessControl = await user.createAccessControl(newAccessControl);
-  //console.log('accessControl', accessControl);
-  //accessControl.toUserId = user.id;
-  //await accessControl.save();
-  //console.log(user, accessControl);
-
-  /*
+    //const newAccessControl = {
+    //  permission: 'MEMBERSHIP_ENTERPRISE',
+    //  toUserId: 1,
+    //};
+    //const user = await User.findByPk(1);
+    //const accessControl = await user.createAccessControl(newAccessControl);
+    //console.log('accessControl', accessControl);
+    //accessControl.toUserId = user.id;
+    //await accessControl.save();
+    //console.log(user, accessControl);
+    /*
   const createNew = false;
 
   if (createNew) {
@@ -228,9 +217,7 @@ async function test() {
     }
   }
   */
-
-
-  /*
+    /*
   //aaaaaaa
   console.log('Started: test');
   const firstName = 'Neta';
@@ -265,22 +252,18 @@ async function test() {
       UserId: 6//createdUser.id
     };
     */
-  ///const accessToken = await AccessToken.create(tokenOptions);
-
-  //const search = { where: { email }, include: 'UserSetting'};
-  //const search = { where: { email }, include: 'UserSetting'};
-
-  //const user = await User.findByPk(1, { include: 'UserSetting'});
-  //const user = await User.findOne(search);
-  //console.log('user', user);
-  //const user = await User.findOne({ where: { email }, include: User.includesForAuth} );
-  //const usr = { email, password, UserProfile: { firstName, lastName } };
-
-
-  //  const user = await User.create(usr, { include: ['UserProfile']});
-  //const aser = await User.create(usr, { include: ['UserProfile']});
-  //console.log('user', user);
-  /*
+    ///const accessToken = await AccessToken.create(tokenOptions);
+    //const search = { where: { email }, include: 'UserSetting'};
+    //const search = { where: { email }, include: 'UserSetting'};
+    //const user = await User.findByPk(1, { include: 'UserSetting'});
+    //const user = await User.findOne(search);
+    //console.log('user', user);
+    //const user = await User.findOne({ where: { email }, include: User.includesForAuth} );
+    //const usr = { email, password, UserProfile: { firstName, lastName } };
+    //  const user = await User.create(usr, { include: ['UserProfile']});
+    //const aser = await User.create(usr, { include: ['UserProfile']});
+    //console.log('user', user);
+    /*
   const user = await User.create(
     {
       email,
@@ -334,6 +317,3 @@ async function test() {
 }
 
 setTimeout(test, 10000);
-
-
-

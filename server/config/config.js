@@ -87,8 +87,8 @@ const db = url.format({
 });
 
 const appHost = NODE_ENV === "development" ? `dev.${APP_HOST}` : APP_HOST;
-console.log("NODE_ENV", NODE_ENV);
-console.log("process.env", process.env);
+console.log("xxxx NODE_ENV", NODE_ENV);
+console.log("xxxx process.env", process.env);
 module.exports = {
     appName: APP_NAME,
     appHost,

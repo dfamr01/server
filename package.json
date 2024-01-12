@@ -11,10 +11,11 @@
     ]
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=local npm run debug:server",
+    "start": "cross-env npm run start:run",
+    "start:run": "node server/server.js",
     "start:test": "cross-env NODE_ENV=test npm run debug:server",
     "start:all-tests": "cross-env NODE_ENV=development nodemon --inspect=5858 server/server.js --exec 'npm run lint && node'",
-    "debug:server": "nodemon --inspect=5858 server/server.js",
+    "debug:server": "cross-env NODE_ENV=development nodemon --inspect=5858 server/server.js",
     "lint": "cross-env NODE_ENV=development eslint --ext .js --color --format=node_modules/eslint-formatter-pretty server",
     "lint:watch": "npm run lint --watch",
     "lint:test": "npm-run-all --parallel lint:watch",
