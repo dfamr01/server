@@ -11,7 +11,7 @@
     ]
   },
   "scripts": {
-    "start": "cross-env ${NODE_ENV} npm run start:run",
+    "start": "cross-env $NODE_ENV npm run start:run",
     "start:run": "node server/server.js",
     "start:test": "cross-env NODE_ENV=test npm run debug:server",
     "start:all-tests": "cross-env NODE_ENV=development nodemon --inspect=5858 server/server.js --exec 'npm run lint && node'",
