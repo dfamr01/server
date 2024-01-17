@@ -89,7 +89,7 @@ console.log("🚀 ~ db postgres:", db);
 
 const appHost = NODE_ENV === "development" ? `dev.${APP_HOST}` : APP_HOST;
 console.log("xxxx NODE_ENV", NODE_ENV);
-console.log("xxxx process.env", process.env);
+// console.log("xxxx process.env", process.env);
 module.exports = {
     appName: APP_NAME,
     appHost,
