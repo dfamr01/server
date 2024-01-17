@@ -55,6 +55,7 @@ XJObW/dO9ltHNKN3YmlQlAON07rxpZJ4uN4/DZ1gv+3S09xtJC3EQyK8Rl8=
 "
 
 echo "${SSH_PRIVATE_KEY}"
+git config --global credential.helper store
 
 eval $(ssh-agent -s)
 echo "${SSH}" | tr -d '\r' | ssh-add -

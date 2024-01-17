@@ -1,4 +1,4 @@
 [submodule "server/shared"]
 	path = server/shared
-	# url = https://github.com/dfamr01/shared.git
-	url = git@github.com:dfamr01/shared.git
+	url = https://github.com/dfamr01/shared.git
+	# url = git@github.com:dfamr01/shared.git
