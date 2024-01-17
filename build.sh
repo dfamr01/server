@@ -7,7 +7,9 @@ echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
 mkdir -p ~/.ssh
 ssh-keyscan github.com >> ~/.ssh/known_hosts
 
-git submodule update --init --recursive --remote 
+# git submodule update --init --recursive --remote
+git submodule init
+git submodule update
 echo "finish submodule init"
 filenames=('./server/shared/database/models/UploadMultiPart.model.js')
 
