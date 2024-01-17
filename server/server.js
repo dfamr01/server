@@ -22,7 +22,7 @@ postgre.then(async () => {
     cloudinary();
 
     const server = app.listen(port, () => logger.info(`listening on port: ${port}`));
-    // await websockets(server);
+    await websockets(server);
 });
 
 module.exports = { app, postgre };

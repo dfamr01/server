@@ -85,6 +85,7 @@ const db = url.format({
     pathname: DB_NAME,
     auth,
 });
+console.log("🚀 ~ db postgres:", db);
 
 const appHost = NODE_ENV === "development" ? `dev.${APP_HOST}` : APP_HOST;
 console.log("xxxx NODE_ENV", NODE_ENV);

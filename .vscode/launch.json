@@ -1,12 +1,27 @@
 {
     "configurations": [
         {
-            "name": "Launch via NPM",
+            "name": "dev",
             "request": "launch",
             "preLaunchTask": "npm: debug",
             "runtimeArgs": [
                 "run-script",
                 "debug"
+            ],
+            "cwd": "${workspaceFolder}",
+            "runtimeExecutable": "npm",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
+            "name": "local",
+            "request": "launch",
+            "preLaunchTask": "npm: debug:local",
+            "runtimeArgs": [
+                "run-script",
+                "debug:local"
             ],
             "cwd": "${workspaceFolder}",
             "runtimeExecutable": "npm",

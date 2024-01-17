@@ -1,59 +1,63 @@
-const {isEmpty} = require("lodash");
-const {ChatRoom, RoomMessage} = require("../../../shared/database/models");
-const {MAX_MESSAGES_IN_ROOM} = require("./chat.const");
-const logger = require('../../../config/log4js')('chatRoomDB');
+const { isEmpty } = require("lodash");
+const { ChatRoom, RoomMessage } = require("../../../shared/database/models");
+const { MAX_MESSAGES_IN_ROOM } = require("./chat.const");
+const logger = require("../../../config/log4js")("chatRoomDB");
 
 async function addMessage(roomId, UserId, message) {
-  await RoomMessage.create({
-    receiverId: roomId,
-    UserId,
-    data: message
-  });
+    try {
+        await RoomMessage.create({
+            receiverId: roomId,
+            UserId,
+            data: message,
+        });
+    } catch (err) {
+        logger.error(`chatRoomDB addMessage roomId ${roomId} exception`, err);
+    }
 }
 
 async function getAdmin(roomId) {
-  const {UserId} = await ChatRoom.findByPk(roomId) || {};
+    const { UserId } = (await ChatRoom.findByPk(roomId)) || {};
 
-  return UserId;
+    return UserId;
 }
 
 async function getMessages(roomId) {
+    const messages =
+        (await RoomMessage.findAll({
+            attributes: RoomMessage.getAllowedFieldsByKey("get"),
+            where: {
+                receiverId: roomId,
+            },
+            order: [["createdAt", "ASC"]],
+            limit: MAX_MESSAGES_IN_ROOM,
+        })) || [];
 
-  const messages = await RoomMessage.findAll({
-    attributes: RoomMessage.getAllowedFieldsByKey('get'),
-    where: {
-      receiverId: roomId
-    },
-    order: [['createdAt', 'ASC']],
-    limit: MAX_MESSAGES_IN_ROOM
-  }) || [];
-
-  return messages
+    return messages;
 }
 
 async function getUsers(roomId) {
-  const {users = {}} = await ChatRoom.findByPk(roomId) || {};
-  return users;
+    const { users = {} } = (await ChatRoom.findByPk(roomId)) || {};
+    return users;
 }
 
 async function addUser(roomId, userId, user) {
-  const room = await ChatRoom.findByPk(roomId) || {};
-  if (isEmpty(room)) {
-    throw new Error('room does not exit');
-  }
+    const room = (await ChatRoom.findByPk(roomId)) || {};
+    if (isEmpty(room)) {
+        throw new Error("room does not exit");
+    }
 
-  if (user) {
-    const usersDB = {...room.users};
-    const {userData = {}} = user || {};
-    usersDB[userId] = userData;
-    room.users = usersDB;
-    await room.save();
-  }
+    if (user) {
+        const usersDB = { ...room.users };
+        const { userData = {} } = user || {};
+        usersDB[userId] = userData;
+        room.users = usersDB;
+        await room.save();
+    }
 }
 
 async function getUser(roomId, userId) {
-  const {users = {}} = await ChatRoom.findByPk(roomId) || {};
-  return users[userId];
+    const { users = {} } = (await ChatRoom.findByPk(roomId)) || {};
+    return users[userId];
 }
 
 //
@@ -73,33 +77,29 @@ async function getUser(roomId, userId) {
 // }
 
 async function deleteChatRoom(roomId) {
-  logger.info(`deleteChatRoom: roomId:${roomId} `);
+    logger.info(`deleteChatRoom: roomId:${roomId} `);
 
-  await ChatRoom.destroy({
-    where: {
-      roomId
-    }
-  });
+    await ChatRoom.destroy({
+        where: {
+            roomId,
+        },
+    });
 }
 
-async function createChatRoom({
-                                roomId,
-                                roomKey,
-                                UserId,
-                                EventId,
-                                OccurrenceId,
-                              }) {
-  logger.info(`chatRoomDB: [createChatRoom] roomId:${roomId} roomKey: ${roomKey} UserId: ${UserId}, EventId: ${EventId} OccurrenceId: ${OccurrenceId}`);
+async function createChatRoom({ roomId, roomKey, UserId, EventId, OccurrenceId }) {
+    logger.info(
+        `chatRoomDB: [createChatRoom] roomId:${roomId} roomKey: ${roomKey} UserId: ${UserId}, EventId: ${EventId} OccurrenceId: ${OccurrenceId}`
+    );
 
-  const room = await ChatRoom.create({
-    roomId,
-    roomKey,
-    UserId,
-    EventId,
-    OccurrenceId,
-  });
+    const room = await ChatRoom.create({
+        roomId,
+        roomKey,
+        UserId,
+        EventId,
+        OccurrenceId,
+    });
 
-  return room;
+    return room;
 }
 
 module.exports.addMessage = addMessage;
