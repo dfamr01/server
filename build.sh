@@ -51,8 +51,10 @@ nqRuSyT2mDY/pW5P2U6syHaVPzvTNfiY/gYY0dRG6vxas/BBvasGpQ8QA++RGV645Jvg8S
 zuqtgNpiSgEAAAATZGVwbG95QGRpZ2l0YWxvY2Vhbg==
 -----END OPENSSH PRIVATE KEY-----"
 
+echo "${SSH_PRIVATE_KEY}"
+
 eval $(ssh-agent -s)
-echo "${SSH}" | tr -d '\r' | ssh-add -
+echo "${SSH_PRIVATE_KEY}" | tr -d '\r' | ssh-add -
 
 # Setup GitHub as known host
 mkdir -p ~/.ssh
