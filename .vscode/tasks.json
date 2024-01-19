@@ -18,7 +18,7 @@
                     },
                 }
             ],
-            "label": "npm: debug",
+            "label": "task: debug",
             "detail": "debug server dev"
         },
         {
@@ -38,7 +38,7 @@
                     },
                 }
             ],
-            "label": "npm: debug:local",
+            "label": "task: debug:local",
             "detail": "debug server local"
         }
     ]

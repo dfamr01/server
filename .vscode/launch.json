@@ -3,11 +3,7 @@
         {
             "name": "dev",
             "request": "launch",
-            "preLaunchTask": "npm: debug",
-            "runtimeArgs": [
-                "run-script",
-                "debug"
-            ],
+            "preLaunchTask": "task: debug",
             "cwd": "${workspaceFolder}",
             "runtimeExecutable": "npm",
             "skipFiles": [
@@ -18,11 +14,11 @@
         {
             "name": "local",
             "request": "launch",
-            "preLaunchTask": "npm: debug:local",
-            "runtimeArgs": [
-                "run-script",
-                "debug:local"
-            ],
+            "preLaunchTask": "task: debug:local",
+            // "runtimeArgs": [
+            //     "run-script",
+            //     "debug:local"
+            // ],
             "cwd": "${workspaceFolder}",
             "runtimeExecutable": "npm",
             "skipFiles": [
