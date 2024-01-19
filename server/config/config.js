@@ -23,6 +23,8 @@ const {
     //redis
     REDIS_HOST,
     REDIS_PORT,
+    REDIS_USER,
+    REDIS_PWD,
 
     // social media
     FACEBOOK_ID,
@@ -103,6 +105,10 @@ module.exports = {
     redis: {
         host: REDIS_HOST,
         port: REDIS_PORT,
+    },
+    redisOptions: {
+        username: REDIS_USER,
+        password: REDIS_PWD,
     },
     primus: { transformer: "engine.io", pathname: "connectPrimus" },
     secret: SESSION_SECRET,

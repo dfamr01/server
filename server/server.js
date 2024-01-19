@@ -1,4 +1,6 @@
 const logger = require("log4js").getLogger("server");
+// const logger = require("./config/log4js")("server");
+
 const config = require("./config/config");
 // postgre should always go first
 const postgre = require("./config/postgre");
@@ -12,8 +14,6 @@ const { makeTempFolder, Currencies } = require("./shared/utils");
 
 const port = config.port;
 const app = express();
-
-//nLoger.error(`this is a server`);
 
 postgre.then(async () => {
     makeTempFolder();
