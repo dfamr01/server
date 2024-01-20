@@ -9,14 +9,14 @@ const websockets = require("./config/websockets");
 const express = require("./config/express");
 const passport = require("./config/passport");
 const cloudinary = require("./config/cloudinary");
-const { makeTempFolder, Currencies } = require("./shared/utils");
+const { filesUtils, Currencies } = require("./shared/utils");
 //const nLoger = require('./config/log4js')('SERVER');
 
 const port = config.port;
 const app = express();
 
 postgre.then(async () => {
-    makeTempFolder();
+    filesUtils.createFolder("temp");
     Currencies.initializeCurrencies();
     passport();
     cloudinary();

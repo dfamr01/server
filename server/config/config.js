@@ -59,6 +59,12 @@ const {
     //aws s3
     S3_BUCKET_NAME,
 
+    // Digitalocean
+    DIGITAL_OCEAN_SPACES_SECRET,
+    DIGITAL_OCEAN_SPACE_ACCESS_KEY_ID,
+    DIGITAL_OCEAN_SPACE_END_POINT,
+    DIGITAL_OCEAN_BUCKET_REGION,
+
     // openExchangeRates
     OPEN_EXCHANGE_RATES_APP_ID,
 
@@ -87,10 +93,11 @@ const db = url.format({
     pathname: DB_NAME,
     auth,
 });
+
 console.log("🚀 ~ db postgres:", db);
+console.log("xxxx NODE_ENV", NODE_ENV);
 
 const appHost = NODE_ENV === "development" ? `dev.${APP_HOST}` : APP_HOST;
-console.log("xxxx NODE_ENV", NODE_ENV);
 // console.log("xxxx process.env", process.env);
 module.exports = {
     appName: APP_NAME,
@@ -140,6 +147,12 @@ module.exports = {
     logger: {
         formatHttp: ":method :url :status :content-length",
         nolog: /\.(gif|jpe?g|png|css|woff2?)$/,
+    },
+    digitalOcean: {
+        bucketRegion: DIGITAL_OCEAN_BUCKET_REGION,
+        secret: DIGITAL_OCEAN_SPACES_SECRET,
+        accessKeyId: DIGITAL_OCEAN_SPACE_ACCESS_KEY_ID,
+        bucketEndPoint: DIGITAL_OCEAN_SPACE_END_POINT,
     },
     awsRegion: AWS_DEFAULT_REGION,
     awsAccessKeyId: AWS_ACCESS_KEY_ID,
