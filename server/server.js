@@ -23,6 +23,7 @@ postgre.then(async () => {
 
     const server = app.listen(port, () => logger.info(`listening on port: ${port}`));
     await websockets(server);
+    console.log("server is running");
     logger.info("server is running");
 });
 
