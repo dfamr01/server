@@ -63,8 +63,8 @@ module.exports = function () {
 
     // CORS
     // ==================================================
-    // app.use(cors());
-    app.use(cors({ origin: "https://livly.tv" }));
+    app.use(cors());
+    // app.use(cors({ origin: "https://livly.tv" }));
 
     // API Routes
     // ==================================================
