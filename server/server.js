@@ -16,7 +16,7 @@ const port = config.port;
 const app = express();
 
 postgre.then(async () => {
-    filesUtils.createFolder("temp");
+    // filesUtils.createFolder("temp");
     Currencies.initializeCurrencies();
     passport();
     cloudinary();
