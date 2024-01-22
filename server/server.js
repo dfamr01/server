@@ -1,19 +1,24 @@
 const logger = require("log4js").getLogger("server");
 // const logger = require("./config/log4js")("server");
+const express = require("express");
 
 const config = require("./config/config");
 // postgre should always go first
 const postgre = require("./config/postgre");
 const redis = require("./config/redis");
 const websockets = require("./config/websockets");
-const express = require("./config/express");
+// const express = require("./config/express");
 const passport = require("./config/passport");
 const cloudinary = require("./config/cloudinary");
 const { filesUtils, Currencies } = require("./shared/utils");
 //const nLoger = require('./config/log4js')('SERVER');
 
 const port = config.port;
+// const app = express();
 const app = express();
+app.get("/", (req, res) => {
+    res.send("Hello, World!");
+});
 
 postgre.then(async () => {
     // filesUtils.createFolder("temp");
@@ -21,7 +26,10 @@ postgre.then(async () => {
     passport();
     cloudinary();
 
-    const server = app.listen(port, () => logger.info(`listening on port: ${port}`));
+    const server = app.listen(port, () => {
+        console.log(`Server is running on http://localhost:${port}`);
+    });
+    // const server = app.listen(port, () => logger.info(`listening on port: ${port}`));
     await websockets(server);
     console.log("server is running");
     logger.info("server is running");
