@@ -20,20 +20,21 @@ app.get("/", (req, res) => {
     res.send("Hello, World!");
 });
 
-postgre.then(async () => {
-    // filesUtils.createFolder("temp");
-    Currencies.initializeCurrencies();
-    passport();
-    cloudinary();
-
-    const server = app.listen(port, () => {
-        console.log(`Server is running on http://localhost:${port}`);
-    });
-    // const server = app.listen(port, () => logger.info(`listening on port: ${port}`));
-    await websockets(server);
-    console.log("server is running");
-    logger.info("server is running");
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
 });
+
+// postgre.then(async () => {
+//     // filesUtils.createFolder("temp");
+//     Currencies.initializeCurrencies();
+//     passport();
+//     cloudinary();
+
+//     const server = app.listen(port, () => logger.info(`listening on port: ${port}`));
+//     await websockets(server);
+//     console.log("server is running");
+//     logger.info("server is running");
+// });
 
 module.exports = { app, postgre };
 
@@ -325,5 +326,3 @@ async function test() {
 }
 */
 }
-
-setTimeout(test, 10000);
