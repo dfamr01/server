@@ -1,4 +1,5 @@
 {
+    "parser": "babel-eslint",
     "env": {
         "es6": true,
         "browser": false,
@@ -9,7 +10,9 @@
     },
     "extends": "eslint:recommended",
     "parserOptions": {
-        "ecmaVersion": 12
+        "ecmaVersion": 12,
+        "sourceType": "module",
+        "allowImportExportEverywhere": true
     },
     "plugins": [
         "flowtype",

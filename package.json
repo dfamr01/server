@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "private": true,
   "description": "Stream me server",
+  "_moduleAliases": {
+    "shared": "./server/shared",
+    "config": "./server/config"
+  },
   "nodemonConfig": {
     "ignore": [
       "/primus/primus.js",
@@ -53,6 +57,7 @@
     "lodash": "^4.17.19",
     "log4js": "^6.3.0",
     "method-override": "^3.0.0",
+    "module-alias": "^2.2.3",
     "moment": "^2.27.0",
     "moment-timezone": "^0.5.31",
     "money": "^0.2.0",

@@ -1,3 +1,5 @@
+require("module-alias/register");
+
 const logger = require("log4js").getLogger("server");
 // const logger = require("./config/log4js")("server");
 const express = require("express");
