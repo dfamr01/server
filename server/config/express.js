@@ -6,6 +6,7 @@ const express = require("express");
 const cors = require("cors");
 const session = require("express-session");
 const RedisStore = require("connect-redis")(session);
+const logger = require("config/log4js")("http");
 const log4js = require("log4js");
 const methodOverride = require("method-override");
 const passport = require("passport");
@@ -18,7 +19,6 @@ const { errorHandler, createClient, getPrimusFolder } = require("../shared/utils
 module.exports = function () {
     const app = express();
     const apiRouter = express.Router();
-    const logger = log4js.getLogger("http");
 
     //  app.use(morgan('combined')); - to log server requests
 
@@ -70,6 +70,7 @@ module.exports = function () {
     // ==================================================
     //apiVersion
     app.use(config.api.prefix, apiRouter);
+
     require("../routes/stripe-hooks.routes")(apiRouter);
 
     apiRouter.use(bodyParser.json());
