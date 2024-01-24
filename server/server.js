@@ -2,14 +2,14 @@ require("module-alias/register");
 
 const logger = require("log4js").getLogger("server");
 // const logger = require("./config/log4js")("server");
-const express = require("express");
+// const express = require("express");
 
 const config = require("./config/config");
 // postgre should always go first
 const postgre = require("./config/postgre");
 const redis = require("./config/redis");
 const websockets = require("./config/websockets");
-// const express = require("./config/express");
+const express = require("./config/express");
 const passport = require("./config/passport");
 const cloudinary = require("./config/cloudinary");
 const { filesUtils, Currencies } = require("./shared/utils");
