@@ -84,6 +84,7 @@ const {
 } = process.env;
 
 const auth = DB_USER && DB_PWD ? `${DB_USER}:${DB_PWD}` : "";
+const appHost = NODE_ENV === "development" ? `dev.${APP_HOST}` : APP_HOST;
 
 const db = url.format({
     protocol: "postgres",
