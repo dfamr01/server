@@ -6,7 +6,7 @@ const { validateRequest, checkIfChunkExists } = require("./helpers/upload.video.
 const config = require("../../config/config");
 const { getS3Client } = require("../../shared/config/aws");
 const { completeMultipartUpload } = require("./helpers/upload.video.utils");
-const { createFileKey } = require("server/shared/utils");
+const { createFileKey } = require("shared/utils");
 
 exports.uploadChunkedVideoCheck = async function (req, res, next) {
     try {

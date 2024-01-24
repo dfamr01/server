@@ -6,7 +6,7 @@ const Event = require("../../shared/database/models/event.model");
 const config = require("config/config");
 const { getS3Client } = require("../../shared/config/aws");
 const { UploadMultiPart } = require("../../shared/database/models");
-const { createFileKey } = require("server/shared/utils");
+const { createFileKey } = require("shared/utils");
 
 exports.uploadChunkedVideoAbort = async function (req, res, next) {
     try {

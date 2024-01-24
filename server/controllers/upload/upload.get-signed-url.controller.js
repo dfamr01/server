@@ -4,7 +4,7 @@ const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
 const logger = require("../../config/log4js")("upload-get-signed-url-ctrl");
 
 const config = require("../../config/config");
-const { createFileKey } = require("server/shared/utils");
+const { createFileKey } = require("shared/utils");
 const { getS3Client } = require("../../shared/config/aws");
 
 exports.uploadGetSignedUrl = async function (req, res, next) {

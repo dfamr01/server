@@ -8,7 +8,7 @@ const { UPLOAD_STATUS } = require("../../shared/config/constants");
 const config = require("../../config/config");
 const { getS3Client } = require("../../shared/config/aws");
 const { UploadMultiPart } = require("../../shared/database/models");
-const { createFileKey } = require("server/shared/utils");
+const { createFileKey } = require("shared/utils");
 
 exports.uploadChunkedVideoStart = async function (req, res, next) {
     const { EventId, fileName, fileSize } = req.body;
@@ -33,11 +33,9 @@ exports.uploadChunkedVideoStart = async function (req, res, next) {
 
         const transactions = await hasTransactions(options);
         if (transactions) {
-            return res
-                .status(400)
-                .jsend.fail(new Error("Cannot change the video, Content has purchases."), {
-                    error: "contentHasTransactions",
-                });
+            return res.status(400).jsend.fail(new Error("Cannot change the video, Content has purchases."), {
+                error: "contentHasTransactions",
+            });
         }
 
         const newUpload = {

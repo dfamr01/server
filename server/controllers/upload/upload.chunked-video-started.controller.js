@@ -2,7 +2,7 @@ const { ListPartsCommand } = require("@aws-sdk/client-s3");
 const logger = require("../../config/log4js")("upload-chunked-video-started-ctrl");
 const { isAdminOrOwner } = require("../../shared/permissions/middleware/upload");
 const Event = require("../../shared/database/models/event.model");
-const { createFileKey } = require("server/shared/utils");
+const { createFileKey } = require("shared/utils");
 const config = require("../../config/config");
 const { getS3Client } = require("../../shared/config/aws");
 

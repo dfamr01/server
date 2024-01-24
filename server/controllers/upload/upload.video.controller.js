@@ -6,7 +6,7 @@ const { isAdminOrOwner } = require("../../shared/permissions/middleware/upload")
 const Event = require("../../shared/database/models/event.model");
 const { UPLOAD_STATUS } = require("../../shared/config/constants");
 const { hasTransactions } = require("../../shared/helpers");
-const { createFileKey } = require("server/shared/utils");
+const { createFileKey } = require("shared/utils");
 const config = require("../../config/config");
 const { getS3Client } = require("../../shared/config/aws");
 
@@ -39,11 +39,9 @@ exports.uploadVideo = async function (req, res, next) {
 
             const transactions = await hasTransactions(options);
             if (transactions) {
-                return res
-                    .status(400)
-                    .jsend.fail(new Error("Cannot change the video, Content has purchases."), {
-                        error: "contentHasTransactions",
-                    });
+                return res.status(400).jsend.fail(new Error("Cannot change the video, Content has purchases."), {
+                    error: "contentHasTransactions",
+                });
             }
 
             logger.info(`File`, body);

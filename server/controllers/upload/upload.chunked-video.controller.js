@@ -11,7 +11,7 @@ const { getPromise } = require("../../shared/utils/general.utils");
 const { UploadMultiPart } = require("../../shared/database/models");
 const { canUploadToS3, uploadToAws } = require("./helpers/upload.chunked-video.controller.helper");
 const { completeMultipartUpload } = require("./helpers/upload.video.utils");
-const { createFileKey } = require("server/shared/utils");
+const { createFileKey } = require("shared/utils");
 
 exports.uploadChunkedVideo = async function (req, res, next) {
     const s3 = getS3Client();
