@@ -6,7 +6,6 @@ const { cloudinaryUpload } = require("../../shared/utils");
 exports.updateCoverPhoto = async function (req, res, next) {
     try {
         const { user, event, file } = req;
-        console.log("🚀 event-update-cover-photo-ctrl ~ file:", file);
 
         let cloudOptions = {
             public_id: `user_${user.id}/event_${event.id}/cover-photo`,
@@ -43,7 +42,7 @@ exports.updateCoverPhoto = async function (req, res, next) {
             .status(200)
             .jsend.success({ coverPhoto, coverPhotoThumbnail, coverPhotoHomePage, coverPhotoInspect });
     } catch (err) {
-        console.log("🚀 ~ event-update-cover-photo-ctrl err:", err);
+        logger.error("event-update-cover-photo-ctrl err:", err);
         logger.warn(err.stack);
         return res.status(500).jsend.fail(err);
     }
