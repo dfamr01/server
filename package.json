@@ -11,7 +11,9 @@
     "ignore": [
       "/primus/primus.js",
       "currencies",
-      "temp"
+      "temp",
+      "temp/*",
+      "./temp"
     ]
   },
   "scripts": {

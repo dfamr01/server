@@ -187,7 +187,7 @@ module.exports = {
     currenciesBackupPath: "currencies",
     currenciesBackupFile: "currencies\\openexchangerates.json",
     multer: {
-        tempFolder: "temp",
+        tempFolder: "temp\\files",
         profileCoverMaxSize: 5e6, // 5 MB
         avatarMaxSize: 5e6, // 5 MB
         mediaMaxSize: 5e6, // 5 MB
