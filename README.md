@@ -1,4 +1,4 @@
-# Blipy.tv - server
+# Livly.tv - server
 
 ## Runbook
 
