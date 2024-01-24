@@ -94,11 +94,6 @@ const db = url.format({
     auth,
 });
 
-console.log("🚀 ~ db postgres:", db);
-console.log("xxxx NODE_ENV", NODE_ENV);
-
-const appHost = NODE_ENV === "development" ? `dev.${APP_HOST}` : APP_HOST;
-// console.log("xxxx process.env", process.env);
 module.exports = {
     appName: APP_NAME,
     appHost,
