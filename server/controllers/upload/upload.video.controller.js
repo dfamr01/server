@@ -80,9 +80,9 @@ exports.uploadVideo = async function (req, res, next) {
                 uploadDetails.status = UPLOAD_STATUS.SUCCESS.key;
 
                 logger.info("upload", upload);
-                if (upload.status === UPLOAD_STATUS.SUCCESS.key) {
+                if (upload?.status === UPLOAD_STATUS.SUCCESS.key) {
                     logger.info("Destroying upload");
-                    await upload.destroy();
+                    // await upload.destroy();
 
                     logger.info("Destroyed creating a new upload");
                     upload = await event.createUpload(uploadDetails);

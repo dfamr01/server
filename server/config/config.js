@@ -60,6 +60,7 @@ const {
 
     //aws s3
     S3_BUCKET_NAME,
+    S3_BUCKET_FOLDER_NAME,
 
     // Digitalocean
     DIGITAL_OCEAN_SPACES_SECRET,
@@ -156,6 +157,7 @@ module.exports = {
     awsAccessKeyId: AWS_ACCESS_KEY_ID,
     awsSecretAccessKey: AWS_SECRET_ACCESS_KEY,
     s3_bucket_name: S3_BUCKET_NAME,
+    s3_bucket_folder_name: S3_BUCKET_FOLDER_NAME,
     s3_signed_upload_url_expires: 3600,
     openExchRt_App_Id: OPEN_EXCHANGE_RATES_APP_ID,
     stripeSecretKey: STRIP_SECRET_KEY,
