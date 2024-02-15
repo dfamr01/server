@@ -98,6 +98,7 @@ exports.uploadVideo = async function (req, res, next) {
                 });
             } catch (e) {
                 logger.error("error", e);
+                return res.status(500).jsend.fail(e);
             }
         });
 
