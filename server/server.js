@@ -16,9 +16,13 @@ const { filesUtils, Currencies } = require("./shared/utils");
 const port = config.port;
 const app = express();
 
+function createTempFolder() {
+    filesUtils.createFolder(config.tempFolder);
+}
+
 postgre.then(async () => {
-    filesUtils.createFolder("temp");
-    Currencies.initializeCurrencies();
+    createTempFolder();
+    Currencies.initializeCurrencies(config.currenciesBackupPath, config.currenciesBackupFile);
     passport();
     cloudinary();
 

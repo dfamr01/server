@@ -1,6 +1,8 @@
 const url = require("url");
 require("./dotenv")(); // load ENV vars
 require("./log4js")(); // config logger
+const TEMP_FOLDER = "temp";
+const TEMP_FOLDER_UPLOADS = `${TEMP_FOLDER}\\uploads`;
 
 const {
     //general
@@ -180,10 +182,11 @@ module.exports = {
         key: CLOUDINARY_KEY,
         secret: CLOUDINARY_SECRET,
     },
-    currenciesBackupPath: "currencies",
-    currenciesBackupFile: "currencies\\openexchangerates.json",
+    currenciesBackupPath: `currencies`,
+    currenciesBackupFile: `currencies\\openexchangerates.json`,
+    tempFolder: TEMP_FOLDER,
     multer: {
-        tempFolder: "temp\\files",
+        tempFolder: `${TEMP_FOLDER_UPLOADS}`,
         profileCoverMaxSize: 5e6, // 5 MB
         avatarMaxSize: 5e6, // 5 MB
         mediaMaxSize: 5e6, // 5 MB
