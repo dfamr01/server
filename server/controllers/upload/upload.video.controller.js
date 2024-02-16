@@ -65,6 +65,11 @@ exports.uploadVideo = async function (req, res, next) {
                 };
                 let upload = await event.getUpload();
                 logger.info("Found upload", upload);
+
+                // const res = await cloudStorage.upload(params);
+                await uploadLib.done();
+                logger.info("File upload complete updating: ", name);
+                uploadDetails.status = UPLOAD_STATUS.SUCCESS.key;
                 if (upload) {
                     // only update uploads that are not complete
                     if (upload.status !== UPLOAD_STATUS.SUCCESS.key) {
@@ -74,21 +79,16 @@ exports.uploadVideo = async function (req, res, next) {
                 } else {
                     await event.createUpload(uploadDetails);
                 }
-                // const res = await cloudStorage.upload(params);
-                await uploadLib.done();
-                logger.info("File upload complete updating: ", name);
-                uploadDetails.status = UPLOAD_STATUS.SUCCESS.key;
+                // logger.info("upload", upload);
+                // if (upload?.status === UPLOAD_STATUS.SUCCESS.key) {
+                //     logger.info("Destroying upload");
+                //     // await upload.destroy();
 
-                logger.info("upload", upload);
-                if (upload?.status === UPLOAD_STATUS.SUCCESS.key) {
-                    logger.info("Destroying upload");
-                    // await upload.destroy();
-
-                    logger.info("Destroyed creating a new upload");
-                    upload = await event.createUpload(uploadDetails);
-                } else {
-                    upload = await upload.filterUpdateFieldsFor({ key: "updateInner", data: uploadDetails });
-                }
+                //     logger.info("Destroyed creating a new upload");
+                //     upload = await event.createUpload(uploadDetails);
+                // } else {
+                //     upload = await upload.filterUpdateFieldsFor({ key: "updateInner", data: uploadDetails });
+                // }
 
                 event.isLive = false;
                 await event.save();
