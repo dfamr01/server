@@ -77,7 +77,7 @@ exports.uploadVideo = async function (req, res, next) {
                         await upload.filterUpdateFieldsFor({ key: "updateInner", data: uploadDetails });
                     }
                 } else {
-                    await event.createUpload(uploadDetails);
+                    upload = await event.createUpload(uploadDetails);
                 }
                 // logger.info("upload", upload);
                 // if (upload?.status === UPLOAD_STATUS.SUCCESS.key) {
